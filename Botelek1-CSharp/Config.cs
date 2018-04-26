@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Discord.WebSocket;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,4 +40,17 @@ namespace Botelek1_CSharp
             public string CmdPrefix;
         }
     }
+
+    class ServerProperties
+    {
+        public struct ServerPropertiesStruct
+
+        {
+            public string VoiceChannelID;
+            public string GuildID;
+            public List<SocketGuildUser> Users;
+
+        }
+    }
 }
+
