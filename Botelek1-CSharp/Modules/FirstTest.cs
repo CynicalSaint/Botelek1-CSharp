@@ -24,7 +24,7 @@ namespace Botelek1_CSharp.Modules
                 embed.WithDescription("Incorrect syntax, command usage : !embed {title}:{message}:{colour}");
                 embed.WithColor(Color.Red);
 
-                await Context.Channel.SendMessageAsync($"New embedded object sent in {Context.Channel.Name} channel", false, embed.Build());
+                await Context.Channel.SendMessageAsync($"", false, embed.Build());
             }
 
             if (messageParts.Length == 2)
@@ -33,7 +33,7 @@ namespace Botelek1_CSharp.Modules
                 embed.WithDescription(messageParts[1]);
                 embed.WithColor(Color.Green);
 
-                await Context.Channel.SendMessageAsync($"New embedded object sent in {Context.Channel.Name} channel", false, embed.Build());
+                await Context.Channel.SendMessageAsync($"", false, embed.Build());
             }
 
             if (messageParts.Length == 3)
@@ -42,7 +42,7 @@ namespace Botelek1_CSharp.Modules
                 embed.WithDescription(messageParts[1]);
                 embed.WithColor(GetColour(messageParts[2]));
 
-                await Context.Channel.SendMessageAsync($"!embed Test:Test:cyan", false, embed.Build());
+                await Context.Channel.SendMessageAsync($"", false, embed.Build());
             }
         }
 
