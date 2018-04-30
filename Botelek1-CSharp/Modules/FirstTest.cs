@@ -46,6 +46,13 @@ namespace Botelek1_CSharp.Modules
             }
         }
 
+        [Command("whisper", RunMode = RunMode.Async)]
+        public async Task Whisper()
+        {
+            IDMChannel dmChannel = await Context.User.GetOrCreateDMChannelAsync();
+            await dmChannel.SendMessageAsync("Hey how ya doing lil momma let me whisper in ya ear");
+        }
+
         private Color GetColour(string colour)
         {
             System.Drawing.Color systemColour = System.Drawing.Color.FromName(colour.Trim());
