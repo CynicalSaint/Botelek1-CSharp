@@ -1,6 +1,8 @@
 ﻿using Discord.Commands;
 using Discord.WebSocket;
+using System;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Botelek1_CSharp.Core
@@ -29,6 +31,27 @@ namespace Botelek1_CSharp.Core
 
             int argPos = 0;
 
+            if (msg.Content.Contains("https://www.youtube.com/") || msg.Content.Contains("https://youtu.be/"))
+            {
+                foreach (Match item in Regex.Matches(msg.Content, @"(http|ftp|https):\/\/([\w\-_]+(?:(?:\.[\w\-_]+)+))([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?"))
+                {
+                    if (Config.bannedVideos.Contains(item.Value))
+                    {
+                        await DeleteMessage(msg);
+                        break;
+                    }
+
+                    foreach (string url in Config.bannedVideos)
+                    {
+                        if (item.Value.Contains(url))
+                        {
+                            await DeleteMessage(msg);
+                        }
+                    }
+
+                }
+            }
+
             if (msg.HasStringPrefix(Config.bot.CmdPrefix, ref argPos) || msg.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
                 IResult result = await _commands.ExecuteAsync(context, argPos);
@@ -37,6 +60,12 @@ namespace Botelek1_CSharp.Core
                     await context.Channel.SendMessageAsync($"[ERROR] {result.ErrorReason}");
                 }
             }
+        }
+
+        private async Task DeleteMessage(SocketUserMessage msg)
+        {
+            await msg.DeleteAsync();
+            await msg.Channel.SendMessageAsync("Get that shit outta here!");
         }
     }
 }
