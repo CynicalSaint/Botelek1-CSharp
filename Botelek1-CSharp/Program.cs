@@ -8,7 +8,7 @@ namespace Botelek1_CSharp
     class Program
     {
         DiscordSocketClient _client;
-        CommandHandler _commands;
+        CommandHandler _service;
 
         static void Main(string[] args) => new Program().StartAsync().GetAwaiter().GetResult();
 
@@ -24,7 +24,7 @@ namespace Botelek1_CSharp
             });
 
             _client.Log += Log;
-            _commands = new CommandHandler();
+            _service = new CommandHandler();
 
              // Config.LoadUser(_client);
 
@@ -32,7 +32,7 @@ namespace Botelek1_CSharp
             await _client.StartAsync();
 
  
-            await _commands.InitializeAsync(_client);
+            await _service.InitializeAsync(_client);
             await Task.Delay(-1);
         }
 

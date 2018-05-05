@@ -19,6 +19,7 @@ namespace Botelek1_CSharp
         {
             _client = client;
             _service = new CommandService();
+
             await _service.AddModulesAsync(Assembly.GetEntryAssembly());
             _client.MessageReceived += HandleCommandAsync;
             
