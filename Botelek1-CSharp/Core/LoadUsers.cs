@@ -9,12 +9,11 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Newtonsoft.Json;
 
-namespace Botelek1_CSharp
+namespace Botelek1_CSharp.Core
 {
-    public class FirstTest : ModuleBase
+    public class LoadAllUsers
     {
-        [Command("addusers", RunMode = RunMode.Async)]
-        public async Task addUsers(DiscordSocketClient client)
+        public static void LoadUsers(DiscordSocketClient client)
         {
             SocketGuild guild = client.GetGuild(140212795592409088);
 
@@ -23,7 +22,7 @@ namespace Botelek1_CSharp
             foreach (SocketGuildUser guildUser in guild.Users)
 
             {
-                string userConfig = Config.userFolder + "/" + guildUser.Username + ".json";
+                string userConfig = Config.UserPath + "/" + guildUser.Username + ".json";
 
                 if (!File.Exists(userConfig))
                 {
@@ -32,21 +31,28 @@ namespace Botelek1_CSharp
                     user.DailyReminder = "";
                     user.Motd = "";
 
+                    Directory.CreateDirectory(Config.UserPath);
                     string json = JsonConvert.SerializeObject(user, Formatting.Indented);
                     File.WriteAllText(userConfig, json);
                     discordUsers.Add(user);
-
+                    Console.WriteLine("***********************************************************************");
+                    Console.WriteLine(userConfig + " Has Been Created" + DateTime.Now);
+                    Console.WriteLine("User " + user + " Has Been Added" + DateTime.Now);
                 }
                 else
                 {
-                    DiscordUser user = JsonConvert.DeserializeObject<DiscordUser>(userConfig);
-                    discordUsers.Add(user);
+                    DiscordUser user = new DiscordUser();
+                    user.Username = guildUser.Username;
+
+                    Console.WriteLine("***********************************************************************");
+                    Console.WriteLine("User " + user + " All Ready Existed" + DateTime.Now);
                 }
 
-                // Console.WriteLine(DiscordUser user);
             }
+
         }
     }
 }
+
     
 

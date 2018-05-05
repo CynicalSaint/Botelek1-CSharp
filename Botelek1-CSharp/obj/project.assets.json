@@ -4620,9 +4620,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aphrodite\\Source\\Repos\\Botelek1-CSharp\\Botelek1-CSharp\\Botelek1-CSharp.csproj",
-      "projectName": "Botelek1-CSharp",
-      "projectPath": "C:\\Users\\Aphrodite\\Source\\Repos\\Botelek1-CSharp\\Botelek1-CSharp\\Botelek1-CSharp.csproj",
+      "projectUniqueName": "C:\\Users\\Aphrodite\\Source\\Repos\\Botelek1-CSharp\\Botelek1-CSharp\\Botelek1_CSharp.csproj",
+      "projectName": "Botelek1_CSharp",
+      "projectPath": "C:\\Users\\Aphrodite\\Source\\Repos\\Botelek1-CSharp\\Botelek1-CSharp\\Botelek1_CSharp.csproj",
       "packagesPath": "C:\\Users\\Aphrodite\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Aphrodite\\Source\\Repos\\Botelek1-CSharp\\Botelek1-CSharp\\obj\\",
       "projectStyle": "PackageReference",
