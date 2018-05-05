@@ -13,6 +13,10 @@ namespace Botelek1_CSharp
         private const string configFile = "config.json";
         private const string configPath = configFolder + "/" + configFile;
 
+        public const string userFolder = "User";
+        public const string UserPath = configFolder + "/" + userFolder;
+
+
         public static BotConfig bot;
 
         static Config()
@@ -34,23 +38,49 @@ namespace Botelek1_CSharp
             }
         }
 
-        public struct BotConfig
+        /*public static void LoadUser(DiscordSocketClient client)
         {
-            public string Token;
-            public string CmdPrefix;
-        }
+            SocketGuild guild = client.GetGuild(140212795592409088);
+                                               
+            List<DiscordUser> discordUsers = new List<DiscordUser>();
+
+            foreach (SocketGuildUser guildUser in guild.Users)
+
+            {
+                string userConfig = userFolder + "/" + guildUser.Username + ".json";
+
+                if (!File.Exists(userConfig))
+                {
+                    DiscordUser user = new DiscordUser();
+                    user.Username = guildUser.Username;
+                    user.DailyReminder = "";
+                    user.Motd = "";
+
+                    string json = JsonConvert.SerializeObject(user, Formatting.Indented);
+                    File.WriteAllText(userConfig, json);
+                    discordUsers.Add(user);
+
+                }
+                else
+                {
+                    DiscordUser user = JsonConvert.DeserializeObject<DiscordUser>(userConfig);
+                    discordUsers.Add(user);
+                }
+
+            }
+
+        }*/
     }
 
-    class ServerProperties
+
+
+    public struct BotConfig
     {
-        public struct ServerPropertiesStruct
-
-        {
-            public string VoiceChannelID;
-            public string GuildID;
-            public List<SocketGuildUser> Users;
-
-        }
+        public string Token;
+        public string CmdPrefix;
     }
+
+
 }
+
 
