@@ -11,11 +11,11 @@ namespace Botelek1_CSharp.Commands
     {
         public class ping_Pong : ModuleBase
         {
-        [Command("Ping")]
-        public async Task Ping()
-        {
-            await ReplyAsync($" Pong! {(Context.Client as DiscordSocketClient).Latency} as :Ping_Pong:");
-        }
+            [Command("ping", RunMode = RunMode.Async)]
+            public async Task Ping()
+            {
+                await ReplyAsync($" Pong! {(Context.Client as DiscordSocketClient).Latency} as :Ping_Pong:");
+            }
         }
     }
 }
