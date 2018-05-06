@@ -1,21 +1,26 @@
-﻿using Discord.Commands;
-using Discord.WebSocket;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Discord;
+using Discord.Commands;
 using System.Threading.Tasks;
 
-namespace Botelek1_CSharp.Commands
+
+namespace Botelek1_CSharp.Core
 {
-    class Ping_Pong
+
+    public class Ping : ModuleBase<SocketCommandContext>
     {
-        public class ping_Pong : ModuleBase
+        
+        [Command("ping")]
+        public async Task PingAsync()
         {
-            [Command("ping", RunMode = RunMode.Async)]
-            public async Task Ping()
-            {
-                await ReplyAsync($" Pong! {(Context.Client as DiscordSocketClient).Latency} as :Ping_Pong:");
+
+                EmbedBuilder builder = new EmbedBuilder();
+
+            builder.WithTitle("Ping!")
+                .WithDescription($"PONG back to you {Context.User.Mention} (This will be a never ending game of Ping/Pong)")
+                .WithColor(Color.DarkRed);
+
+            await ReplyAsync("", false, builder.Build());
             }
         }
     }
-}
+

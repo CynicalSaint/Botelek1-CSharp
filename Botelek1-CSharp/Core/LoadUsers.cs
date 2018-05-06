@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Botelek1_CSharp;
+using Botelek1_CSharp.Style;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -35,17 +36,18 @@ namespace Botelek1_CSharp.Core
                     string json = JsonConvert.SerializeObject(user, Formatting.Indented);
                     File.WriteAllText(userConfig, json);
                     discordUsers.Add(user);
-                    Console.WriteLine("***********************************************************************");
-                    Console.WriteLine(userConfig + " Has Been Created" + DateTime.Now);
-                    Console.WriteLine("User " + user + " Has Been Added" + DateTime.Now);
+                    Console.WriteLine(SystemStyle.FrameTop);
+                    Console.WriteLine(userConfig + " Has Been Created " + "{" + DateTime.Now + "}");
+                    Console.WriteLine("User " + user + " Has Been Added " + "{" + DateTime.Now + "}");
+                    Console.WriteLine(SystemStyle.FrameBottom);
                 }
                 else
                 {
-                    DiscordUser user = new DiscordUser();
-                    user.Username = guildUser.Username;
+                  
 
-                    Console.WriteLine("***********************************************************************");
-                    Console.WriteLine("User " + user + " All Ready Existed" + DateTime.Now);
+                    Console.WriteLine(SystemStyle.FrameTop);
+                    Console.WriteLine("User " + guildUser.Username + " Already Existed " + "{" + DateTime.Now + "}");
+                    Console.WriteLine(SystemStyle.FrameBottom);
                 }
 
             }

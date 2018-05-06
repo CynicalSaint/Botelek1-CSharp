@@ -1,5 +1,6 @@
 ﻿using Discord.WebSocket;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using static Botelek1_CSharp.Core.Config;
@@ -42,11 +43,6 @@ namespace Botelek1_CSharp.Core
         }
 
 
-            
-
-
-            
-            
 
         public struct BotConfig
         {

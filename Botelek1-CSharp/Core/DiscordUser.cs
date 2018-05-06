@@ -21,5 +21,6 @@ namespace Botelek1_CSharp
         public String Motd { get; set; }
     }
 
+    
 
 }
