@@ -19,7 +19,7 @@ namespace Botelek1_CSharp.Commands.Daily_Reminder
         private SocketUser guildUser;
         
 
-        [Command("dradd")]
+        [Command(Config.Daily_Reminder_Add)]
         public async Task draddAsync(string add)
         {
             guildUser = Context.User;
@@ -63,10 +63,12 @@ namespace Botelek1_CSharp.Commands.Daily_Reminder
 
             EmbedBuilder builder = new EmbedBuilder();
 
-                builder.WithTitle("WOw Cool Wow")
-                    .WithDescription("Would you look at that:")
-                    .WithColor(Color.Red);
-                
+                builder.WithTitle("Daily Reminder")
+                    .WithDescription("Your Daily Reminder has been added!")
+                    .WithColor(Color.Red)
+                    .WithThumbnailUrl(Config.ThumbnailUrl);
+
+
                 await ReplyAsync("", false, builder.Build());
                  Context.Channel.SendMessageAsync(add);
 

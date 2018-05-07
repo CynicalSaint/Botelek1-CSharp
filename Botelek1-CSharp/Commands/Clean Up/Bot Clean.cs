@@ -1,16 +1,19 @@
-﻿using Botelek1_CSharp.Style;
+﻿using Botelek1_CSharp.Core;
+using Botelek1_CSharp.Style;
 using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Botelek1_CSharp.Commands.Clean_Up
 {
     public class CleanUp : ModuleBase
     {
-        [Command("CP", RunMode = RunMode.Async)]
+        [Command(Config.Clean_Up, RunMode = RunMode.Async)]
 
         public async Task cleanUp(int amount)
         {
@@ -20,10 +23,9 @@ namespace Botelek1_CSharp.Commands.Clean_Up
             {
                 if (Context.User.Id == 140213467717042177)
                 {
+                    var message = await Context.Channel.GetMessagesAsync(amount + 1).Flatten();
+                    await Context.Channel.DeleteMessagesAsync(message);
                     
-
-
-
                 }
                 else
                 {
@@ -44,4 +46,5 @@ namespace Botelek1_CSharp.Commands.Clean_Up
             }
         }
     }
+
 }

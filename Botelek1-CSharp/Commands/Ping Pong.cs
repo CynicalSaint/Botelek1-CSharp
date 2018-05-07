@@ -9,7 +9,7 @@ namespace Botelek1_CSharp.Core
     public class Ping : ModuleBase<SocketCommandContext>
     {
         
-        [Command("ping")]
+        [Command(Config.Ping_Pong)]
         public async Task PingAsync()
         {
 
@@ -17,10 +17,12 @@ namespace Botelek1_CSharp.Core
 
             builder.WithTitle("Ping!")
                 .WithDescription($"PONG back to you {Context.User.Mention} (This will be a never ending game of Ping/Pong)")
-                .WithColor(Color.DarkRed);
+                .WithColor(Color.DarkRed)
+                .WithThumbnailUrl(Config.ThumbnailUrl);
 
             await ReplyAsync("", false, builder.Build());
-            }
+            
+        }
         }
     }
 
